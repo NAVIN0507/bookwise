@@ -7,9 +7,15 @@ const nextConfig: NextConfig = {
       {
       protocol:'https',
       hostname:"m.media-amazon.com"
+      },
+      {
+        protocol:'https',
+        hostname:'ik.imageKit.io',
+        port:''
       }
     ]
   }
 };
+
 
 export default nextConfig;
