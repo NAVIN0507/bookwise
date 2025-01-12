@@ -1,6 +1,7 @@
 const config ={
     env:{
         apiEndpoint:process.env.NEXT_PUBLIC_API_ENDPOINT!,
+        prodEndpoint:process.env.NEXT_PUBLIC_PROD_API_ENDPOINT!,
         imageKit:{
             urlEndpoint:'https://ik.imagekit.io/mnsnavin',
             publicKey:'public_KALsYmzE0AOK1pjnNsKfGrcFlkE=',
