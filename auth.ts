@@ -18,10 +18,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             if(user.length ===0) return null;
             const isPasswordValid = await compare(credentials.password.toString() , user[0].password);
             if(!isPasswordValid) return null;
+            
             return{
                 id:user[0].id.toString(),
                 email:user[0].email.toString(),
-                name : user[0].fullName 
+                name : user[0].fullName,
+                
             }as User
         }
     })

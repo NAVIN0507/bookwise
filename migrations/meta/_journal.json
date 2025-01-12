@@ -8,6 +8,20 @@
       "when": 1736603938048,
       "tag": "0000_typical_mauler",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1736686330989,
+      "tag": "0001_aspiring_iron_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1736687630356,
+      "tag": "0002_demonic_white_tiger",
+      "breakpoints": true
     }
   ]
 }

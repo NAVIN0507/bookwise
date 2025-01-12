@@ -25,7 +25,10 @@ try {
     if(result?.error ){
         return {success : false , error : result.error}
     }
-    return {success : true }
+//  !  const data =  await db.select().from(users).where(eq(users.email , email))
+  
+ 
+    return {success : true } // ! data
 } catch (error) {
     console.log(error , "SignIN ERROR")
         return {success : false ,error :"Sign In Error"}
@@ -49,6 +52,7 @@ export const SignUp = async(params : AuthCredentials)=>{
              universityId,
             password : hashedPassword,
             universityCard,
+            
          });
          await signInWithCredentails({email , password})
         return {success : true }

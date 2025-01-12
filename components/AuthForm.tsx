@@ -19,11 +19,11 @@ import { Input } from "@/components/ui/input"
 import Link from 'next/link'
 import { FIELD_NAMES, FIELD_TYPES } from '@/constants'
 import ImageUpload from './ImageUpload'
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 interface Props<T extends FieldValues>{
 schema:ZodType<T>;
 defaultValues:T;
-onSubmit:(data : T) => Promise<{success : boolean , error?:string }>
+onSubmit:(data : T) => Promise<{success : boolean , error?:string ,  }> // !data:any
 type:"SIGN_IN"|"SIGN_UP"
 }
 const AuthForm = <T extends FieldValues>({type , schema , defaultValues , onSubmit}:Props<T>) => {
@@ -39,6 +39,10 @@ const AuthForm = <T extends FieldValues>({type , schema , defaultValues , onSubm
   // 2. Define a submit handler.
   const handleSubmit : SubmitHandler<T>  =  async(data) => {
     const result  = await onSubmit(data);
+// !    console.log("This is data" ,result.data[0].universityId)
+// !      if(result.data[0].isAdmin){
+//  !return redirect("/admin")
+// !    }
     if(result.success){
       console.log("Success ")
         toast({
@@ -47,6 +51,7 @@ const AuthForm = <T extends FieldValues>({type , schema , defaultValues , onSubm
         })
         router.push('/')
     }
+  
     else{
         toast({
           title: `Error ${isSignIn ?"Signing in" :"signing up"}`,
