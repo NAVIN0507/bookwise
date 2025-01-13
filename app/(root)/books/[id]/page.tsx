@@ -17,7 +17,7 @@ const page = async ({params}:{params:{id:string}}) => {
 
   return (
     <>
-    <BookOverview {...bookDetails} userId ={session?.user?.id}/>
+    <BookOverview {...bookDetails} userId ={session?.user?.id !}/>
     <div className='book-details'>
         <div className='flex-[1.5]'>
             <section className='flex flex-col gap-7'>
