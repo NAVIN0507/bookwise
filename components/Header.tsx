@@ -1,4 +1,3 @@
-"use client"
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -31,7 +30,7 @@ const Header = () => {
             </Avatar>
             </Link> */}
             <form action={async()=>{
-                
+                 "use server";
                 await signOut();
                }}> <Button>Logout</Button></form>
         </li>
