@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   description: "Book Borrowign Management",
 };
 
-const RootLayout = async ({children,}:{children:ReactNode;}) => {
+const RootLayout = async ({children}:{children:ReactNode;}) => {
   const session = await auth();
   return (
     <html lang="en">

@@ -13,6 +13,8 @@ const nextConfig: NextConfig = {
         hostname:'ik.imageKit.io',
         port:''
       }
+      ,
+      
     ]
   },
   typescript:{

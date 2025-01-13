@@ -7,7 +7,7 @@ const BookOverview = ({id , author , title , rating ,
 
     genre,
     totalCopies,
-    availableCopies,
+    availabelCopies,
     description,
     coverColor,
     coverUrl,
@@ -34,7 +34,7 @@ const BookOverview = ({id , author , title , rating ,
                     Total Books : <span>{totalCopies}</span>
                 </p>
                  <p>
-                    Available Books : <span>{availableCopies}</span>
+                    Available Books : <span>{availabelCopies}</span>
                 </p>
             </div>
             <p className='book-description'>
