@@ -28,7 +28,7 @@ try {
 //  !  const data =  await db.select().from(users).where(eq(users.email , email))
   
  
-    return {success : true } // ! data
+    return {success : true } // !data
 } catch (error) {
     console.log(error , "SignIN ERROR")
         return {success : false ,error :"Sign In Error"}

@@ -1,10 +1,11 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import { DefaultValues, FieldValues , Path, SubmitHandler, useForm, UseFormReturn } from 'react-hook-form'
 import { z, ZodType} from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
+
 
 import {
   Form,
@@ -22,11 +23,15 @@ import { FIELD_NAMES, FIELD_TYPES } from '@/constants'
 import { useRouter } from 'next/navigation'
 import { bookSchema } from '@/lib/validation'
 import { Textarea } from '@/components/ui/textarea'
+import ImageUpload from '@/components/FileUpload'
+import ColorPicker from '../ColorPicker'
 interface Props extends Partial<Book> {
 type:"create"|"update"
 }
 const BookForm = <T extends FieldValues>({type}:Props) => {
   const router = useRouter();
+
+  
     const isSignIn = type ==="create"
       const { toast } = useToast()
 
@@ -47,7 +52,7 @@ summary:"",
   })
  
  const onSubmit = async(values : z.infer<typeof bookSchema>)=>{
-
+    console.log(values)
  } // 2. Define a submit handler.
  
   return (
@@ -110,19 +115,23 @@ summary:"",
           )}
         />
         <FormField
-          
           control={form.control}
-          name="rating"
+          name={"rating"}
           render={({ field }) => (
-            <FormItem className='flex flex-col gap-1'>
-              <FormLabel className='text-base font-normal text-dark-500'>
+            <FormItem className="flex flex-col gap-1">
+              <FormLabel className="text-base font-normal text-dark-500">
                 Rating
-                </FormLabel>
+              </FormLabel>
               <FormControl>
-                <Input required type='number'  min={1} max={5} placeholder='Book Rating'{...field} className='book-form_input' />
-               
+                <Input
+                  type="number"
+                  min={1}
+                  max={5}
+                  placeholder="Book rating"
+                  {...field}
+                  className="book-form_input"
+                />
               </FormControl>
-             
               <FormMessage />
             </FormItem>
           )}
@@ -152,11 +161,11 @@ summary:"",
           render={({ field }) => (
             <FormItem className='flex flex-col gap-1'>
               <FormLabel className='text-base font-normal text-dark-500'>
-                Cover Url
+                Book Image
                 </FormLabel>
               <FormControl>
               {/* File Upload component */}
-               
+               <ImageUpload type='image' accept='image/*' placeholder='Upload a book covers' folder='books/cover' variant='light' onFileChange={field.onChange} value={field.value}/>
               </FormControl>
              
               <FormMessage />
@@ -174,7 +183,7 @@ summary:"",
                 </FormLabel>
               <FormControl>
                {/* cover color */}
-               
+               <ColorPicker value={field.value} onPickerChange={field.onChange}/>
               </FormControl>
              
               <FormMessage />
@@ -208,7 +217,7 @@ summary:"",
 Video Trailer                </FormLabel>
               <FormControl>
                {/* File Upload */}
-               
+                <ImageUpload type='video' accept='video/*' placeholder='Upload a trailer video' folder='books/videos' variant='light' onFileChange={field.onChange} value={field.value}/>
               </FormControl>
              
               <FormMessage />
@@ -232,6 +241,7 @@ Video Trailer                </FormLabel>
             </FormItem>
           )}
         />
+        <Button className='book-form_btn text-white' type='submit'>Add Book to Library</Button>
       </form>
     </Form> 
     

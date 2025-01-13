@@ -17,7 +17,7 @@ export const bookSchema = z.object({
     title:z.string().trim().min(2).max(100),
     author:z.string().trim().min(2).max(100),
     genre:z.string().trim().min(2).max(50),
-    rating:z.number().min(1).max(5),
+    rating:z.coerce.number().min(1).max(5),
     totalCopies:z.coerce.number().int().positive().lte(10000),
     description:z.string().trim().min(10).max(1000),
     coverUrl:z.string().nonempty(),
