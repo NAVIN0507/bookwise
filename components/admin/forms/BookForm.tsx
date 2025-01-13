@@ -25,6 +25,7 @@ import { bookSchema } from '@/lib/validation'
 import { Textarea } from '@/components/ui/textarea'
 import ImageUpload from '@/components/FileUpload'
 import ColorPicker from '../ColorPicker'
+import { createBook } from '@/lib/admin/action/book'
 interface Props extends Partial<Book> {
 type:"create"|"update"
 }
@@ -53,6 +54,22 @@ summary:"",
  
  const onSubmit = async(values : z.infer<typeof bookSchema>)=>{
     console.log(values)
+ const result =    await createBook(values);
+ if(result.success){
+    toast({
+        title:"Success",
+        description:"Book Created Successfully"
+  
+    });
+    router.push(`/admin/books/${result.data.id}`)
+ }
+ else{
+    toast({
+        title:"Error",
+        description:"Book Creation Failed",
+        variant:"destructive"
+    })
+ }
  } // 2. Define a submit handler.
  
   return (
