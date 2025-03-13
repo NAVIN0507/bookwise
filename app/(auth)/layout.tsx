@@ -15,7 +15,7 @@ const layout =  async({children} :{children : ReactNode}) => {
           <h1 className='text-2xl font-semibold text-white'>BookWise</h1>
           </div>
                   <div>{children}</div>
-
+  
         </div>
       </section>
       <section className='auth-illustration'>
